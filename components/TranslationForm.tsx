@@ -14,9 +14,9 @@ export default function TranslationForm({ onVisualize }: TranslationFormProps) {
     const [sourceLanguage, setSourceLanguage] = useState("English");
     const [targetLanguage, setTargetLanguage] = useState("Spanish");
     const [result, setResult] = useState<AnalyzeResult | null>(null);
-    const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const submitted = result !== null;
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -35,7 +35,6 @@ export default function TranslationForm({ onVisualize }: TranslationFormProps) {
             if (!res.ok) throw new Error(data.error ?? `Request failed (${res.status})`);
 
             setResult(data as AnalyzeResult);
-            setSubmitted(true);
         } catch (err) {
             setError(err instanceof Error ? err.message : "Something went wrong");
         } finally {
@@ -46,7 +45,6 @@ export default function TranslationForm({ onVisualize }: TranslationFormProps) {
     const handleClear = () => {
         setText("");
         setResult(null);
-        setSubmitted(false);
         setError(null);
     }
 
