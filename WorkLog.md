@@ -11,3 +11,6 @@ Made the api route actually translate the text with Groq and then translate it b
 
 Sunday 5/31
 Wrote the word diff in lib/translation.ts so it compares the original and the round-trip text and figures out the loss. Made the Visualizer component show the highlighted words. Also wrote the README.
+
+Monday 6/1
+Wrote the reflection question, final review of project and final submission.
